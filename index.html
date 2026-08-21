@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dispensing Systems Inc. | Draught Beer & Liquor Dispensing Systems | Edmonton, Alberta</title>
+<meta name="description" content="DSI designs, supplies, installs, and services draught beer and liquor dispensing systems for bars, restaurants, breweries, events, and home builds across Alberta. Thirty years behind the tap." />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0a2f5c;
+    --navy-deep: #071f3d;
+    --blue: #1a56b0;
+    --blue-light: #e8f0fb;
+    --copper: #b8791a;
+    --copper-light: #f4e8d4;
+    --cream: #f7f5f0;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --white: #ffffff;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  .pipe {
+    width: 56px;
+    height: 3px;
+    background: var(--copper);
+    border-radius: 2px;
+  }
+  .pipe.center { margin-left: auto; margin-right: auto; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid rgba(10,47,92,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 24px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 44px; width: auto; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-text .name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); text-transform: uppercase; }
+  .brand-text .tagline { font-size: 11px; color: var(--copper); font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; }
+
+  nav.main-nav { display: flex; align-items: center; gap: 28px; }
+  nav.main-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  nav.main-nav a:hover { color: var(--copper); }
+
+  .header-call {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .header-call svg { width: 16px; height: 16px; fill: var(--copper); flex-shrink: 0; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    margin: 5px 0;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(180deg, rgba(7,31,61,0.55) 0%, rgba(7,31,61,0.75) 55%, rgba(7,31,61,0.92) 100%),
+                url('images/site/hero-copper-tower.jpg') center / cover no-repeat;
+  }
+  .hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 60px 24px 56px;
+    width: 100%;
+  }
+  .eyebrow {
+    color: var(--copper-light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    color: var(--white);
+    font-size: clamp(40px, 7vw, 68px);
+    font-weight: 800;
+    max-width: 780px;
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent { color: var(--copper-light); }
+  .hero p.sub {
+    color: #e6ecf5;
+    font-size: 17px;
+    max-width: 540px;
+    margin-bottom: 32px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-copper { background: var(--copper); color: var(--white); }
+  .btn-copper:hover { background: #a06813; }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.6); }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .hero-contact svg { width: 16px; height: 16px; fill: var(--copper-light); flex-shrink: 0; }
+
+  /* ---------- Trust strip ---------- */
+  .trust {
+    background: var(--navy-deep);
+    color: #cfdbec;
+    padding: 22px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  .trust strong { color: var(--white); }
+  .trust .brands { color: var(--copper-light); }
+
+  /* ---------- Section shell ---------- */
+  section.block { padding: 72px 0; }
+  .block-head { max-width: 640px; margin-bottom: 40px; }
+  .block-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .block-head h2 { font-size: clamp(30px, 4vw, 42px); color: var(--navy); margin: 14px 0 12px; }
+  .block-head p { color: var(--ink-soft); font-size: 16px; }
+
+  /* ---------- Services grid ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(10,47,92,0.08);
+    border-radius: 8px;
+    padding: 28px 24px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .service-card:hover { border-color: var(--copper); transform: translateY(-2px); }
+  .service-card .icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    background: var(--blue-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .service-card .icon svg { width: 22px; height: 22px; fill: var(--blue); }
+  .service-card h3 { font-size: 21px; color: var(--navy); text-transform: none; font-weight: 700; margin-bottom: 8px; letter-spacing: 0; }
+  .service-card p { font-size: 14.5px; color: var(--ink-soft); }
+  .service-card .link { display: inline-block; margin-top: 14px; font-size: 13.5px; font-weight: 600; color: var(--copper); text-transform: uppercase; letter-spacing: 0.02em; }
+
+  /* ---------- Work preview ---------- */
+  .work-section { background: var(--navy); }
+  .work-section .block-head h2, .work-section .block-head p { color: var(--white); }
+  .work-section .block-head p { color: #c6d3e6; }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .work-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: #123a6b;
+  }
+  .work-item img { width: 100%; height: 100%; object-fit: cover; }
+  .work-item .cap {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 14px;
+    background: linear-gradient(180deg, transparent, rgba(7,31,61,0.9));
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .work-cta { text-align: center; margin-top: 36px; }
+
+  /* ---------- Why choose ---------- */
+  .why-block { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+  .why-copy { flex: 1 1 420px; }
+  .why-copy p { color: var(--ink-soft); font-size: 16.5px; margin-top: 16px; }
+  .why-list { flex: 1 1 320px; display: flex; flex-direction: column; gap: 18px; }
+  .why-list .item { display: flex; gap: 14px; align-items: flex-start; }
+  .why-list .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--copper);
+    font-size: 15px;
+    border: 1.5px solid var(--copper);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .why-list .item p { font-size: 15px; color: var(--ink-soft); }
+  .why-list .item strong { color: var(--navy); }
+
+  /* ---------- CTA band ---------- */
+  .cta-band {
+    background: var(--copper);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .cta-band h2 { color: var(--white); font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
+  .cta-band p { color: #fbeed9; font-size: 16px; margin-bottom: 28px; }
+  .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 22px; }
+  .cta-actions a { color: var(--white); font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .cta-actions svg { width: 16px; height: 16px; fill: var(--white); }
+  .cta-band .btn-copper { background: var(--navy); }
+  .cta-band .btn-copper:hover { background: var(--navy-deep); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--navy-deep); color: #b9c7dc; padding: 56px 0 24px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  footer h4 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; font-size: 15px; color: var(--white); letter-spacing: 0.04em; margin-bottom: 16px; }
+  footer .brand-text .name { color: var(--white); }
+  .footer-about p { font-size: 14px; color: #a8b8d0; margin-top: 12px; max-width: 320px; }
+  .footer-contact div { display: flex; gap: 10px; font-size: 14px; margin-bottom: 12px; align-items: flex-start; }
+  .footer-contact svg { width: 15px; height: 15px; fill: var(--copper); flex-shrink: 0; margin-top: 2px; }
+  .footer-contact a:hover { color: var(--white); }
+  .footer-links a { display: block; font-size: 14px; margin-bottom: 10px; color: #b9c7dc; }
+  .footer-links a:hover { color: var(--white); }
+  .social-row { display: flex; gap: 12px; margin-top: 16px; }
+  .social-row a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .social-row a svg { width: 15px; height: 15px; fill: #b9c7dc; }
+  .social-row a:hover { border-color: var(--copper); }
+  .social-row a:hover svg { fill: var(--copper); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    padding-top: 20px;
+    font-size: 12.5px;
+    color: #7e90ac;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    nav.main-nav, .header-call { display: none; }
+    .nav-toggle { display: block; }
+    .header-inner { padding: 12px 20px; }
+
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .work-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .why-block { flex-direction: column; }
+  }
+  @media (max-width: 560px) {
+    .hero { min-height: 560px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+    .trust .wrap { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/site/dsi-logo.png" alt="DSI Dispensing Systems Inc. logo" />
+      <div class="brand-text">
+        <span class="name">Dispensing Systems Inc.</span>
+        <span class="tagline">Thirty years behind the tap</span>
+      </div>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="our-work.html">Our Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="tel:+17804969476" class="header-call">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+      (780) 496-9476
+    </a>
+
+    <button class="nav-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Edmonton & Alberta &middot; Draft Beer &amp; Liquor Dispensing Systems</p>
+    <h1>The perfect pour <span class="accent">starts here.</span></h1>
+    <p class="sub">We design, supply, install, and service draught beer and liquor dispensing systems for bars, restaurants, breweries, events, and home builds across Alberta.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-copper">Get a free quote</a>
+      <a href="our-work.html" class="btn btn-outline">See our work</a>
+    </div>
+    <div class="hero-contact">
+      <a href="tel:+17804969476">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        (780) 496-9476
+      </a>
+      <a href="mailto:reception@dsicontrols.ca">
+        <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+        reception@dsicontrols.ca
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <strong>30+ years</strong> serving Alberta &middot; trusted by independent pubs and restaurants, and by industry leaders including
+    <span class="brands">Molson Coors, Labatt Breweries, Big Rock Brewery, Asahi Canada,</span> and <span class="brands">Breakthru Beverage.</span>
+  </div>
+</div>
+
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="block-head center">
+      <div class="pipe center"></div>
+      <h2>Everything behind the tap</h2>
+      <p>From a single home kegerator to a full commercial liquor system, we handle the whole thing &mdash; design, install, and the service that keeps it pouring.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 2h2v3h6V2h2v3h1a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h1V2zm-1 7v11h12V9H6z"/></svg></div>
+        <h3>Draft beer systems</h3>
+        <p>Complete systems designed and installed for your space &mdash; towers, faucets, glycol lines, coolers, and CO2, built to pour clean every time.</p>
+        <a href="services.html#draft-beer" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 2h6v2l-1 1v3l4 8v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-4l4-8V5L9 4V2zm1 8-3 6v3h8v-3l-3-6h-2z"/></svg></div>
+        <h3>Liquor dispensing</h3>
+        <p>Precision spirit and cocktail dispensing systems for any style of bar &mdash; consistent measures, faster service, and tighter cost control.</p>
+        <a href="services.html#liquor-dispensing" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M5 3h14a1 1 0 0 1 1 1v6H4V4a1 1 0 0 1 1-1zm-1 9h16v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8zm3 3v3h2v-3H7z"/></svg></div>
+        <h3>Kegerator rentals</h3>
+        <p>Kegerators for weddings, corporate parties, backyard events, and home bars &mdash; delivered ready to pour, picked up when you're done.</p>
+        <a href="services.html#kegerators" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5c0 2-1.2 3.4-2.3 4.6-.9 1-1.7 1.9-1.7 3.4v5h-2v-5c0-1.5-.8-2.4-1.7-3.4C8.2 10.4 7 9 7 7a5 5 0 0 1 5-5zm-1 17h2v3h-2v-3z"/></svg></div>
+        <h3>Glycol cooling</h3>
+        <p>Sizing, installation, service, and repair for the glycol systems that keep beer at a consistent temperature from cooler to faucet.</p>
+        <a href="services.html#glycol" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v2h18V7l-9-5zM4 11v9h3v-7h2v7h2v-7h2v7h2v-7h2v7h3v-9H4z"/></svg></div>
+        <h3>Events &amp; portable systems</h3>
+        <p>Portable dispensing for festivals, concerts, weddings, and corporate events &mdash; reliable, high-volume service, organized and easy to run.</p>
+        <a href="services.html#events" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/></svg></div>
+        <h3>Service &amp; repair</h3>
+        <p>Diagnosing and fixing warm beer, foaming, inconsistent pours, gas issues, and equipment failure &mdash; plus regular line cleaning programs.</p>
+        <a href="services.html#service-repair" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 12h4v8H4v-8zm6-6h4v14h-4V6zm6 3h4v11h-4V9z"/></svg></div>
+        <h3>System upgrades &amp; expansions</h3>
+        <p>Outgrowing your system or renovating your bar? We assess and expand existing installations &mdash; new towers, products, trunk lines, and gas capacity.</p>
+        <a href="services.html#upgrades" class="link">Learn more &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2 3 6v6c0 5 3.8 9.3 9 10 5.2-.7 9-5 9-10V6l-9-4zm0 2.2 7 3.1v4.7c0 4-2.9 7.5-7 8.1-4.1-.6-7-4.1-7-8.1V7.3l7-3.1zM11 8h2v5h-2V8zm0 6h2v2h-2v-2z"/></svg></div>
+        <h3>Preventative maintenance</h3>
+        <p>Scheduled inspections and maintenance for your system, catching problems before they affect your customers or cost you downtime.</p>
+        <a href="services.html#maintenance" class="link">Learn more &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block work-section" id="our-work">
+  <div class="wrap">
+    <div class="block-head center">
+      <div class="pipe center"></div>
+      <h2>Real systems, still pouring</h2>
+      <p>A look at what we've installed across Alberta &mdash; bars and restaurants, home builds, and events.</p>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-item">
+        <img src="images/our-work/behind-the-scenes/custom-tower-install.jpg" alt="Custom curved copper tap tower installed on hardwood bar" />
+        <div class="cap">Custom tower install</div>
+      </div>
+      <div class="work-item">
+        <img src="images/our-work/bars-restaurants/illuminated-keg-cooler.jpg" alt="Backlit illuminated keg cooler display at a restaurant bar" />
+        <div class="cap">Illuminated keg cooler</div>
+      </div>
+      <div class="work-item">
+        <img src="images/our-work/behind-the-scenes/multi-tower-build.jpg" alt="Multiple beer towers lined up during assembly at DSI's shop" />
+        <div class="cap">Multi-tower build</div>
+      </div>
+      <div class="work-item">
+        <img src="images/our-work/events/big-valley-jamboree-van.jpg" alt="DSI branded van parked at the Big Valley Jamboree festival stage" />
+        <div class="cap">Big Valley Jamboree</div>
+      </div>
+    </div>
+
+    <div class="work-cta">
+      <a href="our-work.html" class="btn btn-outline">See all our work</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="why-dsi">
+  <div class="wrap why-block">
+    <div class="why-copy">
+      <div class="pipe"></div>
+      <h2>Why choose DSI?</h2>
+      <p>A draught system isn't simply a collection of parts. Every component needs to work together &mdash; from the keg and gas system through the beer line, cooling system, tower, and faucet.</p>
+      <p>Whether you're building a new bar or keeping an existing system running, we provide the experience and technical knowledge to get the job done right.</p>
+    </div>
+    <div class="why-list">
+      <div class="item">
+        <span class="num">1</span>
+        <p><strong>Thirty years in Alberta.</strong> Practical experience, quality workmanship, and dependable service, built up over three decades.</p>
+      </div>
+      <div class="item">
+        <span class="num">2</span>
+        <p><strong>Trusted by the beer industry.</strong> We work directly with breweries and beverage suppliers including Molson Coors, Labatt, Big Rock, Asahi Canada, and Breakthru Beverage.</p>
+      </div>
+      <div class="item">
+        <span class="num">3</span>
+        <p><strong>Any size, any scale.</strong> A single home kegerator or a full nightclub liquor system &mdash; we design, install, and service both the same way.</p>
+      </div>
+      <div class="item">
+        <span class="num">4</span>
+        <p><strong>We keep it pouring.</strong> Installation is the start &mdash; ongoing maintenance, line cleaning, and repair keep systems running long after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to talk about your system?</h2>
+    <p>Get in touch and we'll get back to you.</p>
+    <a href="contact.html" class="btn btn-copper">Get a free quote</a>
+    <div class="cta-actions">
+      <a href="tel:+17804969476">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        (780) 496-9476
+      </a>
+      <a href="mailto:reception@dsicontrols.ca">
+        <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+        reception@dsicontrols.ca
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand">
+          <img src="images/site/dsi-logo.png" alt="DSI Dispensing Systems Inc. logo" style="height:40px;" />
+          <div class="brand-text">
+            <span class="name">Dispensing Systems Inc.</span>
+            <span class="tagline">Thirty years behind the tap</span>
+          </div>
+        </a>
+        <p>We design, supply, install, and service draught beer and liquor dispensing systems for bars, restaurants, breweries, events, and home builds across Alberta.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/p/Dispensing-Systems-Inc-100063649773448/" aria-label="DSI on Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          <a href="tel:+17804969476">(780) 496-9476</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+          <div>
+            <a href="mailto:reception@dsicontrols.ca">reception@dsicontrols.ca</a><br/>
+            <a href="mailto:Dave@dsicontrols.ca">Dave@dsicontrols.ca</a> <span style="color:#7e90ac;">(sales)</span>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+          <a href="https://www.bing.com/maps/default.aspx?v=2&pc=FACEBK&mid=8100&where1=17950%20106th%20Ave%20NW%20%23%20100%2C%20Edmonton%2C%20AB%2C%20Canada%2C%20T5S%201V4" target="_blank" rel="noopener">
+            17950 106th Ave NW #100<br/>Edmonton, AB T5S 1V4
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick links</h4>
+        <a href="services.html">Services</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dispensing Systems Inc. All rights reserved.</span>
+      <span>Edmonton &amp; Alberta</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

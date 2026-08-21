@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Get a Free Quote | DSI Edmonton</title>
+<meta name="description" content="Get in touch with Dispensing Systems Inc. for a free quote on draught beer systems, liquor dispensing, kegerator rentals, and more across Alberta." />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0a2f5c;
+    --navy-deep: #071f3d;
+    --blue: #1a56b0;
+    --blue-light: #e8f0fb;
+    --copper: #b8791a;
+    --copper-light: #f4e8d4;
+    --cream: #f7f5f0;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --white: #ffffff;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.05; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .pipe { width: 56px; height: 3px; background: var(--copper); border-radius: 2px; }
+
+  /* ---------- Header (shared) ---------- */
+  header { background: var(--white); border-bottom: 1px solid rgba(10,47,92,0.08); position: sticky; top: 0; z-index: 50; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px; max-width: 1160px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 44px; width: auto; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-text .name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); text-transform: uppercase; }
+  .brand-text .tagline { font-size: 11px; color: var(--copper); font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; }
+  nav.main-nav { display: flex; align-items: center; gap: 28px; }
+  nav.main-nav a { font-size: 14px; font-weight: 500; color: var(--navy); }
+  nav.main-nav a.active { color: var(--copper); }
+  nav.main-nav a:hover { color: var(--copper); }
+  .header-call { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--navy); white-space: nowrap; }
+  .header-call svg { width: 16px; height: 16px; fill: var(--copper); flex-shrink: 0; }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; }
+
+  /* ---------- Page intro ---------- */
+  .page-hero { background: var(--navy); padding: 64px 0 48px; }
+  .page-hero .eyebrow { color: var(--copper-light); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+  .page-hero h1 { color: var(--white); font-size: clamp(34px, 5vw, 52px); font-weight: 800; margin-bottom: 16px; max-width: 700px; }
+  .page-hero p { color: #cfdbec; font-size: 16.5px; max-width: 560px; }
+
+  /* ---------- Contact layout ---------- */
+  .contact-block { padding: 64px 0 80px; }
+  .contact-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: flex-start; }
+
+  .form-card { background: var(--white); border: 1px solid rgba(10,47,92,0.08); border-radius: 10px; padding: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .field label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .field input, .field select, .field textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 11px 12px;
+    border: 1px solid rgba(10,47,92,0.18);
+    border-radius: 6px;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--copper);
+    background: var(--white);
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+  .field.full { grid-column: 1 / -1; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px 26px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    background: var(--copper);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .submit-btn:hover { background: #a06813; }
+
+  .form-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; text-align: center; }
+  .form-status { font-size: 14px; margin-top: 14px; display: none; padding: 12px 14px; border-radius: 6px; }
+  .form-status.success { background: #e6f4ea; color: #1e5f36; display: block; }
+  .form-status.error { background: #fbe9e7; color: #8f2d20; display: block; }
+
+  /* ---------- Details column ---------- */
+  .details-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 32px;
+  }
+  .details-card .pipe { background: var(--copper-light); margin-bottom: 18px; }
+  .details-card h2 { font-size: 24px; margin-bottom: 6px; }
+  .details-card .sub { color: var(--copper-light); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 24px; }
+
+  .detail-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+  .detail-row svg { width: 18px; height: 18px; fill: var(--copper-light); flex-shrink: 0; margin-top: 2px; }
+  .detail-row a, .detail-row span { font-size: 15px; color: #e6ecf5; }
+  .detail-row a:hover { color: var(--white); }
+
+  .details-social { display: flex; gap: 10px; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .details-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .details-social a svg { width: 16px; height: 16px; fill: var(--copper-light); }
+  .details-social a:hover { border-color: var(--copper); }
+
+  /* ---------- Footer (shared) ---------- */
+  footer { background: var(--navy-deep); color: #b9c7dc; padding: 56px 0 24px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  footer h4 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; font-size: 15px; color: var(--white); letter-spacing: 0.04em; margin-bottom: 16px; }
+  footer .brand-text .name { color: var(--white); }
+  .footer-about p { font-size: 14px; color: #a8b8d0; margin-top: 12px; max-width: 320px; }
+  .footer-contact div { display: flex; gap: 10px; font-size: 14px; margin-bottom: 12px; align-items: flex-start; }
+  .footer-contact svg { width: 15px; height: 15px; fill: var(--copper); flex-shrink: 0; margin-top: 2px; }
+  .footer-contact a:hover { color: var(--white); }
+  .footer-links a { display: block; font-size: 14px; margin-bottom: 10px; color: #b9c7dc; }
+  .footer-links a:hover { color: var(--white); }
+  .social-row { display: flex; gap: 12px; margin-top: 16px; }
+  .social-row a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+  .social-row a svg { width: 15px; height: 15px; fill: #b9c7dc; }
+  .social-row a:hover { border-color: var(--copper); }
+  .social-row a:hover svg { fill: var(--copper); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 20px; font-size: 12.5px; color: #7e90ac; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    nav.main-nav, .header-call { display: none; }
+    .nav-toggle { display: block; }
+    .header-inner { padding: 12px 20px; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/site/dsi-logo.png" alt="DSI Dispensing Systems Inc. logo" />
+      <div class="brand-text">
+        <span class="name">Dispensing Systems Inc.</span>
+        <span class="tagline">Thirty years behind the tap</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="our-work.html">Our Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a href="tel:+17804969476" class="header-call">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+      (780) 496-9476
+    </a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's talk about your system.</h1>
+    <p>Tell us about your space and what you're looking to do, and we'll get back to you.</p>
+  </div>
+</section>
+
+<section class="contact-block">
+  <div class="wrap contact-layout">
+
+    <div class="form-card">
+      <form id="contact-form" method="POST" action="/api/contact">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="business">Business or venue name</label>
+            <input type="text" id="business" name="business" placeholder="Optional" />
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="interest">What are you looking for</label>
+          <select id="interest" name="interest">
+            <option value="">Select one</option>
+            <option value="Draft Beer Systems">Draft Beer Systems</option>
+            <option value="Liquor Dispensing">Liquor Dispensing</option>
+            <option value="Kegerator Rental">Kegerator Rental</option>
+            <option value="Glycol Cooling">Glycol Cooling</option>
+            <option value="Events & Portable Systems">Events &amp; Portable Systems</option>
+            <option value="Service & Repair">Service &amp; Repair</option>
+            <option value="System Upgrade or Expansion">System Upgrade or Expansion</option>
+            <option value="General Question / Not Sure">General Question / Not Sure</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell us a bit about your space and what you need..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send message</button>
+        <p class="form-note">We typically respond within one to two business days.</p>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </div>
+
+    <div class="details-card">
+      <div class="pipe"></div>
+      <p class="sub">Dispensing Systems Inc.</p>
+      <h2>Get in touch</h2>
+
+      <div class="detail-row">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        <a href="tel:+17804969476">(780) 496-9476</a>
+      </div>
+
+      <div class="detail-row">
+        <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+        <span>
+          <a href="mailto:reception@dsicontrols.ca">reception@dsicontrols.ca</a><br/>
+          <span style="color:#a8b8d0; font-size:12.5px;">General inquiries</span>
+        </span>
+      </div>
+
+      <div class="detail-row">
+        <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+        <span>
+          <a href="mailto:Dave@dsicontrols.ca">Dave@dsicontrols.ca</a><br/>
+          <span style="color:#a8b8d0; font-size:12.5px;">Sales</span>
+        </span>
+      </div>
+
+      <div class="detail-row">
+        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+        <a href="https://www.bing.com/maps/default.aspx?v=2&pc=FACEBK&mid=8100&where1=17950%20106th%20Ave%20NW%20%23%20100%2C%20Edmonton%2C%20AB%2C%20Canada%2C%20T5S%201V4" target="_blank" rel="noopener">
+          17950 106th Ave NW #100<br/>Edmonton, AB T5S 1V4
+        </a>
+      </div>
+
+      <div class="details-social">
+        <a href="https://www.facebook.com/p/Dispensing-Systems-Inc-100063649773448/" aria-label="DSI on Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand">
+          <img src="images/site/dsi-logo.png" alt="DSI Dispensing Systems Inc. logo" style="height:40px;" />
+          <div class="brand-text">
+            <span class="name">Dispensing Systems Inc.</span>
+            <span class="tagline">Thirty years behind the tap</span>
+          </div>
+        </a>
+        <p>We design, supply, install, and service draught beer and liquor dispensing systems for bars, restaurants, breweries, events, and home builds across Alberta.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/p/Dispensing-Systems-Inc-100063649773448/" aria-label="DSI on Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          <a href="tel:+17804969476">(780) 496-9476</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 6 8-6H4zm16 2.2-7.4 5.6a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+          <div>
+            <a href="mailto:reception@dsicontrols.ca">reception@dsicontrols.ca</a><br/>
+            <a href="mailto:Dave@dsicontrols.ca">Dave@dsicontrols.ca</a> <span style="color:#7e90ac;">(sales)</span>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+          <a href="https://www.bing.com/maps/default.aspx?v=2&pc=FACEBK&mid=8100&where1=17950%20106th%20Ave%20NW%20%23%20100%2C%20Edmonton%2C%20AB%2C%20Canada%2C%20T5S%201V4" target="_blank" rel="noopener">
+            17950 106th Ave NW #100<br/>Edmonton, AB T5S 1V4
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick links</h4>
+        <a href="services.html">Services</a>
+        <a href="our-work.html">Our Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dispensing Systems Inc. All rights reserved.</span>
+      <span>Edmonton &amp; Alberta</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        status.className = 'form-status success';
+        status.textContent = "Thanks, your message has been sent. We'll get back to you soon.";
+        form.reset();
+      } else {
+        throw new Error('Request failed');
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = "Something went wrong sending your message. Please call or email us directly.";
+    }
+  });
+</script>
+
+</body>
+</html>
