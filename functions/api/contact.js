@@ -16,28 +16,58 @@ export async function onRequestPost(context) {
       );
     }
 
-    // ---------------------------------------------------------------
-    // TODO before this goes live: this function currently validates
-    // and accepts the submission, but does NOT send an email yet.
-    // You'll need to wire in an actual email-sending step here, for
-    // example using Resend (resend.com) or a similar transactional
-    // email API with a free tier. That involves:
-    //   1. Creating an account with the email provider
-    //   2. Getting an API key
-    //   3. Adding that key as an encrypted environment variable in
-    //      the Cloudflare Pages project settings (never commit it
-    //      to this file or to GitHub)
-    //   4. Calling their API here with fetch(), passing the form
-    //      data through to reception@dsicontrols.ca
-    //
-    // Worth researching current options directly when you set this
-    // up, since available free-tier email services on Cloudflare
-    // Pages change over time.
-    // ---------------------------------------------------------------
+    // Sends the submission to DSI's inbox via Resend (resend.com).
+    // RESEND_API_KEY is set as an encrypted environment variable in the
+    // Cloudflare Pages project settings, never hardcoded here.
+    const apiKey = context.env.RESEND_API_KEY;
 
-    console.log("New contact form submission:", {
-      name, email, phone, business, interest, message
+    if (!apiKey) {
+      console.error("RESEND_API_KEY is not configured in Cloudflare Pages settings.");
+      return new Response(
+        JSON.stringify({ error: "Email service is not configured." }),
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const escapeHtml = (str = "") =>
+      String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+      }[c]));
+
+    const emailHtml = `
+      <h2>New contact form submission</h2>
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(phone) || "Not provided"}</p>
+      <p><strong>Business:</strong> ${escapeHtml(business) || "Not provided"}</p>
+      <p><strong>Interested in:</strong> ${escapeHtml(interest) || "Not specified"}</p>
+      <p><strong>Message:</strong></p>
+      <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+    `;
+
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "DSI Website <no-reply@dsicontrols.ca>",
+        to: "reception@dsicontrols.ca",
+        reply_to: email,
+        subject: `New website inquiry from ${name}`,
+        html: emailHtml,
+      }),
     });
+
+    if (!resendResponse.ok) {
+      const errText = await resendResponse.text();
+      console.error("Resend API error:", resendResponse.status, errText);
+      return new Response(
+        JSON.stringify({ error: "Failed to send message. Please try again or call us directly." }),
+        { status: 502, headers: { "Content-Type": "application/json" } }
+      );
+    }
 
     return new Response(
       JSON.stringify({ success: true }),
